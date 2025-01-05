@@ -3,15 +3,22 @@
 // In modules/Admin/routes/web.php
 use Illuminate\Support\Facades\Route;
 use Modules\Admin\Http\Controllers\AdminController;
+use Modules\Admin\Http\Controllers\NavController;
+use Modules\Admin\Http\Controllers\RoomFeatureController;
+use Modules\Admin\Http\Controllers\RoomController;
+
 use App\Http\Middleware\RoleBasedRedirect;
 /*
 |----------------------------------------------------------------------
 | Admin Routes
 |----------------------------------------------------------------------
 */
-
-Route::middleware(['auth' , RoleBasedRedirect::class])->prefix('admin')->name('admin.')->group(function () {
-
-    Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard'); // Correct route name
-
-});
+Route::middleware(['auth', RoleBasedRedirect::class])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
+        Route::get('/room-management', [NavController::class, 'RoomManagement'])->name('room-management');
+        Route::resource('/manage-rooms', RoomController::class);
+        // Add other admin routes here
+    });

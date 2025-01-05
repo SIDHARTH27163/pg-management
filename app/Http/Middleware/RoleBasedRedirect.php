@@ -15,23 +15,12 @@ class RoleBasedRedirect
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
-    {
-        // Check if the user is authenticated
-        if (Auth::check()) {
-            $user = Auth::user();
-            $currentRouteName = $request->route()->getName();
+        {
+            // Check if the user is authenticated
+           
 
-            // Redirect based on user role, avoiding infinite loop
-            if ($user->acc_type === 'admin' && $currentRouteName !== 'admin.dashboard') {
-                return redirect()->route('admin.dashboard');
-            }
-
-            if ($user->acc_type === 'user' && $currentRouteName !== 'dashboard') {
-                return redirect()->route('dashboard');
-            }
+            // Allow the request to proceed if no redirection
+            return $next($request);
         }
 
-        // Allow request to proceed
-        return $next($request);
-    }
 }
