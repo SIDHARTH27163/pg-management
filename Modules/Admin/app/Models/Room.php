@@ -11,9 +11,10 @@ class Room extends Model
 
     protected $fillable = [
         'status',
+        'room_no',
         'room_type',
-        'number_of_rooms',
-        'bathrooms',
+        'number_of_tenants',
+        'bathroom',
         'balconies',
         'capacity',
         'availability',
@@ -21,4 +22,22 @@ class Room extends Model
         'additional_charges',
         'description',
     ];
+
+    // Automatically generate sequential room_no starting from 101
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($room) {
+            $lastRoom = self::latest('id')->first();
+            $lastRoomNo = $lastRoom ? intval($lastRoom->room_no) : 100; // Start from 100
+            $room->room_no = $lastRoomNo + 1;
+        });
+    }
+    public function features()
+    {
+        return $this->hasMany(RoomFeature::class);
+    }
+    
+
 }

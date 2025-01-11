@@ -14,14 +14,15 @@ return new class extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->enum('status', ['active', 'inactive'])->default('active');
-            $table->string('room_type'); // e.g., Private Room, Studio
-            $table->integer('number_of_rooms');
-            $table->integer('bathrooms');
-            $table->integer('balconies')->nullable();
+            $table->string('room_type');
+            $table->string('room_no')->unique();
+            $table->integer('number_of_tenants');
+            $table->boolean('bathroom')->default(true);
+            $table->boolean('balconies')->default(false);
             $table->integer('capacity'); // Number of people
             $table->boolean('availability')->default(true); // Available or not
             $table->decimal('rent', 10, 2); // Monthly rent
-            $table->decimal('additional_charges', 10, 2)->nullable(); // Additional charges
+            $table->text('additional_charges'); // Additional charges
             $table->text('description'); // Monthly rent
             $table->timestamps();
         });
