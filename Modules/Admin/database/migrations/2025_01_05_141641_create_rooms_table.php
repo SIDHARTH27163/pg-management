@@ -47,7 +47,7 @@ return new class extends Migration
         Schema::create('room_images', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('room_id'); // Foreign key to `rooms` table
-            $table->string('image_path'); // Path to the image
+            $table->string('cover_image_path');
             $table->timestamps();
         
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');

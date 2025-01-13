@@ -4,7 +4,7 @@
             <x-room-layout>
                 <x-slot name="header">
                     <h2 class="font-semibold text-ll text-gray-800 dark:text-gray-200 leading-tight">
-                        {{ __('Manage Rooms Features - Select Room and Add Features') }}
+                        {{ __('Manage Rooms Rules - Select Room and Add Rules') }}
                     </h2>
                 </x-slot>
                 
@@ -19,11 +19,11 @@
 
                         {{-- Form for Add/Update --}}
                         <form 
-                            action="{{ isset($feature) ? route('admin.manage-room-features.update', $feature->id) : route('admin.manage-room-features.store') }}" 
+                            action="{{ isset($rule) ? route('admin.manage-room-rules.update', $rule->id) : route('admin.manage-room-rules.store') }}" 
                             method="POST"
                         >
                             @csrf
-                            @if (isset($feature))
+                            @if (isset($rule))
                                 @method('PUT') <!-- Use PUT method for update -->
                             @endif
 
@@ -34,7 +34,7 @@
                                     <select id="room_id" name="room_id" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm">
                                         <option value="" disabled selected>Select Room</option>
                                         @foreach($rooms as $room)
-                                            <option value="{{ $room->id }}" {{ isset($feature) && $feature->room_id == $room->id ? 'selected' : '' }}>
+                                            <option value="{{ $room->id }}" {{ isset($rule) && $rule->room_id == $room->id ? 'selected' : '' }}>
                                                 {{ $room->room_no }} - {{ $room->room_type }}
                                             </option>
                                         @endforeach
@@ -45,20 +45,20 @@
                                 
                                 <!-- Feature Input -->
                                 <div>
-                                    <x-input-label for="feature" :value="__('Feature')" />
+                                    <x-input-label for="rule" :value="__('Add Rule')" />
                                     <x-text-input 
-                                        id="feature" 
-                                        name="feature" 
-                                        value="{{ old('feature', $feature->feature ?? '') }}" 
+                                        id="rule" 
+                                        name="rule" 
+                                        value="{{ old('rule', $rule->feature ?? '') }}" 
                                         class="block w-full mt-1"
                                     />
-                                    <x-input-error :messages="$errors->get('feature')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('rule')" class="mt-2" />
                                 </div>
                             </div>
 
                             <div class="mt-6">
                                 <x-primary-button>
-                                    {{ isset($feature) ? __('Update Feature') : __('Add Feature') }}
+                                    {{ isset($rule) ? __('Update Rule') : __('Add Rule') }}
                                 </x-primary-button>
                             </div>
                         </form>
@@ -66,7 +66,7 @@
                         {{-- Table to Display Features --}}
                         
                         <div class="my-5">
-                            @if(isset($features) && $features->isNotEmpty())
+                            @if(isset($rules) && $rules->isNotEmpty())
                                 <table class="min-w-full table-auto border-collapse border border-gray-300">
                                     <thead>
                                         <tr>
@@ -77,26 +77,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($features as $feature)
+                                        @foreach($rules as $rule)
                                             <tr>
                                                 <td class="px-4 py-2 border text-center">
-                                                    {{ $feature->room->room_no ?? 'N/A' }}
+                                                    {{ $rule->room->room_no ?? 'N/A' }}
                                                 </td>
                                                 <td class="px-4 py-2 border text-center">
-                                                    {{ $feature->room->room_type ?? 'N/A' }}
+                                                    {{ $rule->room->room_type ?? 'N/A' }}
                                                 </td>
                                                 <td class="px-4 py-2 border text-center">
-                                                    {{ $feature->feature }}
+                                                    {{ $rule->rule }}
                                                 </td>
                                                 <td class="px-4 py-2 border text-center">
                                                     <a 
-                                                        href="{{ route('admin.manage-room-features.edit', $feature->id) }}" 
+                                                        href="{{ route('admin.manage-room-rules.edit', $rule->id) }}" 
                                                         class="text-blue-600"
                                                     >
                                                         Edit
                                                     </a>
                                                     <form 
-                                                        action="{{ route('admin.manage-room-features.destroy', $feature->id) }}" 
+                                                        action="{{ route('admin.manage-room-rules.destroy', $rule->id) }}" 
                                                         method="POST" 
                                                         class="inline"
                                                     >

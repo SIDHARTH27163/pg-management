@@ -38,6 +38,19 @@ class Room extends Model
     {
         return $this->hasMany(RoomFeature::class);
     }
+    public function rules()
+    {
+        return $this->hasMany(RoomRule::class);
+    }
+    public function cover_images()
+    {
+        return $this->hasMany(RoomImage::class);
+    }
+    public function gallery_images()
+    {
+        return $this->hasMany(RoomsGallery::class);
+    }
+
     
 
 }

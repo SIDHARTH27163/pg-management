@@ -1,7 +1,6 @@
 <?php
 
 namespace Modules\Admin\Http\Controllers;
-
 use Modules\Admin\Models\Room;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -69,7 +68,7 @@ class RoomFeatureController extends Controller
         try {
             // Validate the request data
             $request->validate([
-                'room' => 'required|exists:rooms,id', // Validate the room selection
+                'room_id' => 'required|exists:rooms,id', // Validate the room selection
                 'feature' => 'required|string|max:255',
             ]);
     
@@ -78,7 +77,7 @@ class RoomFeatureController extends Controller
     
             // Update the record
             $feature->update([
-                'room_id' => $request->room,
+                'room_id' => $request->room_id,
                 'feature' => $request->feature,
             ]);
     

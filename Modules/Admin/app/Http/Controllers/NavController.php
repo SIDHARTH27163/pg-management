@@ -1,10 +1,13 @@
 <?php
 
 namespace Modules\Admin\Http\Controllers;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Modules\Admin\Models\Room;
+use Modules\Admin\Models\RoomFeature;
+use Modules\Admin\Models\RoomRule;
+use Modules\Admin\Models\RoomImage;
+use Modules\Admin\Models\RoomsGallery;
 class NavController extends Controller
 {
     /**
@@ -12,8 +15,13 @@ class NavController extends Controller
      */
     public function RoomManagement()
     {
-        return view('admin::RoomManagement.index');
+        // Fetch all rooms with their associated data
+        $rooms = Room::with(['features', 'rules', 'cover_images', 'gallery_images'])->get();
+        
+        // Pass the data to the view
+        return view('admin::RoomManagement.index', compact('rooms'));
     }
+    
     public function UserManagement()
     {
         return view('admin::UserManagement.index');
