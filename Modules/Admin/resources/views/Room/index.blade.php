@@ -83,21 +83,33 @@
                     <x-text-input id="rent" class="block mt-1 w-full" type="text" step="0.01" name="rent" :value="old('rent', $room->rent ?? '')" />
                     <x-input-error :messages="$errors->get('rent')" class="mt-2" />
                 </div>
-                
+            </div>
                 <!-- Additional Charges -->
                 <div>
                     <x-input-label for="additional_charges" :value="__('Additional Charges')" />
-                    <x-textarea id="additional_charges" name="additional_charges" :value="old('additional_charges', $room->additional_charges ?? '')" />
-                    <x-input-error :messages="$errors->get('additional_charges')" class="mt-2" />
+                        <x-texteditor 
+                        id="additional_charges" 
+                        name="additional_charges" 
+                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm" 
+                        value="{{ is_array(old('additional_charges', $room->additional_charges ?? '')) ? '' : old('additional_charges', $room->additional_charges ?? '') }}" 
+                    />
+                 
+                        <x-input-error :messages="$errors->get('additional_charges')" class="mt-2" />
                 </div>
                 
                 <!-- Description -->
                 <div>
                     <x-input-label for="description" :value="__('Description')" />
-                    <x-textarea id="description" name="description" :value="old('description', $room->description ?? '')" />
+                  
+                        <x-texteditor 
+                        id="description" 
+                        name="description" 
+                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm" 
+                        value="{{ is_array(old('description', $room->description ?? '')) ? '' : old('description', $room->description ?? '') }}" 
+                    />
                     <x-input-error :messages="$errors->get('description')" class="mt-2" />
                 </div>
-            </div>
+            
             
             <div class="mt-6">
                 <x-primary-button>{{ isset($room) ? __('Update Room') : __('Add Room') }}</x-primary-button>

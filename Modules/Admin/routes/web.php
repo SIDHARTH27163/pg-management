@@ -8,7 +8,9 @@ use Modules\Admin\Http\Controllers\RoomFeatureController;
 use Modules\Admin\Http\Controllers\RoomController;
 use Modules\Admin\Http\Controllers\RoomRuleController;
 use Modules\Admin\Http\Controllers\RoomImageController;
+use Modules\Admin\Http\Controllers\PageController;
 use App\Http\Middleware\RoleBasedRedirect;
+
 /*
 |----------------------------------------------------------------------
 | Admin Routes
@@ -24,5 +26,7 @@ Route::middleware(['auth', RoleBasedRedirect::class])
         Route::resource('/manage-room-features', RoomFeatureController::class);
         Route::resource('/manage-room-rules', RoomRuleController::class);
         Route::resource('/manage-room-images', RoomImageController::class);
+        Route::resource('/pages', PageController::class);
+      
         // Add other admin routes here
     });

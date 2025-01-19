@@ -1,11 +1,22 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RoleBasedRedirect;
-
+use Modules\Admin\Models\Page;
 Route::get('/', function () {
     return view('welcome');
+});
+// root routes'
+Route::get('/rooms' , [HomeController::class , 'rooms']);
+Route::get('/view-room/{id}', [HomeController::class, 'view_room']);
+
+Route::get('/gallery' , [HomeController::class , 'Gallery']);
+// root routes ends
+Route::get('/{slug}', function ($slug) {
+    $page = Page::where('slug', $slug)->firstOrFail();
+    return view('pages.dynamic', compact('page'));
 });
 
 Route::get('/dashboard', function () {

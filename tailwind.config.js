@@ -12,12 +12,13 @@ export default {
         "./node_modules/flowbite/**/*.js"
 
     ],
-
+    darkMode: 'class', 
     theme: {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
+            }
+           
         },
     },
 

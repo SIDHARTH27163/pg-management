@@ -1,0 +1,33 @@
+.custom-gradient {
+    background: linear-gradient(120deg, #1a1a1a, #0f0f0f);
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #ff6b6b, #ffd93d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hover-lift {
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+.diagonal-box {
+    transform: skewY(-5deg);
+}
+
+.diagonal-content {
+    transform: skewY(5deg);
+}
+
+
+.custom-shape {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
