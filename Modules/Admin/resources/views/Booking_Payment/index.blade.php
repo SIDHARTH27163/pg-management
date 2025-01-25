@@ -1,13 +1,10 @@
 <x-admin-layout>
     <section class="max-w-7xl mx-auto p-1">
-        <div class="container relative z-40 mx-auto mt-10 p-5">
+        <div class="container relative z-40 mx-auto mt-2 p-5">
             <!-- Not-Approved Bookings Table -->
-            <x-slot name="header">
-                <h2 class="font-semibold text-ll text-gray-800 dark:text-gray-200 leading-tight">
-                    {{ __('Hey Here Are Some New Rquests') }}
-                </h2>
-            </x-slot>
-            <div class="overflow-x-auto bg-white shadow-md rounded-lg">
+           
+            <div class="overflow-x-auto bg-white shadow-md rounded-lg my-5 p-5">
+                <h2 class="text-2xl font-semibold mb-4">Hey Here Are Some New Rquests</h2>
                 <table class="min-w-full table-auto">
                     <thead>
                         <tr class="bg-gray-100">
@@ -41,12 +38,9 @@
             </div>
 
             <!-- Approved Bookings Table -->
-            <x-slot name="header">
-                <h2 class="font-semibold text-ll text-gray-800 dark:text-gray-200 leading-tight">
-                    {{ __('Approved Requests') }}
-                </h2>
-            </x-slot>
-            <div class="overflow-x-auto bg-white shadow-md rounded-lg">
+          
+            <div class="overflow-x-auto bg-white shadow-md rounded-lg my-5 p-5">
+                <h2 class="text-2xl font-semibold mb-4">Hey Here Are Approced Booking Requests</h2>
                 <table class="min-w-full table-auto">
                     <thead>
                         <tr class="bg-gray-100">
