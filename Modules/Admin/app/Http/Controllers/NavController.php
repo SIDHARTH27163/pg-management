@@ -8,6 +8,7 @@ use Modules\Admin\Models\RoomFeature;
 use Modules\Admin\Models\RoomRule;
 use Modules\Admin\Models\RoomImage;
 use Modules\Admin\Models\RoomsGallery;
+use App\Models\Booking;
 class NavController extends Controller
 {
     /**
@@ -28,8 +29,20 @@ class NavController extends Controller
     }
     public function Booking_PaymentManagement()
     {
-        return view('admin::Booking_Payment.index');
+        
+        $approvedBookings = Booking::where('status', 'approved')
+                                   ->orderBy('created_at', 'desc') // Order by creation date in descending order
+                                   ->paginate(10);   
+        
+        $notApprovedBookings = Booking::where('status', 'not-approved')
+                                      ->orderBy('created_at', 'desc') // Order by creation date in descending order
+                                      ->paginate(10);
+    
+        
+        return view('admin::Booking_Payment.index', compact('approvedBookings', 'notApprovedBookings'));
     }
+    
+    
     public function PaymentsManagement()
     {
         return view('admin::Payments.index');

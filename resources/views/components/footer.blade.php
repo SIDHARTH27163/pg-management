@@ -1,8 +1,9 @@
-<footer class="py-12 border-t border-white/5">
+<footer class="py-2 border-t border-white/5">
     <div class="max-w-7xl mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="mb-8 md:mb-0">
-                <span class="text-2xl font-bold text-gradient">CozyWay.</span>
+                <img src="https://res.cloudinary.com/dd9xaofdu/image/upload/v1737822937/cozyway_fyxi1a.png" class="h-full w-full" alt="CozyWay Logo" />
+                {{-- <span class="text-2xl font-bold text-gradient">CozyWay.</span> --}}
             </div>
             <div class="flex space-x-6">
                 <a href="https://www.twitter.com/themrsami" class="text-zinc-400 hover:text-white transition-colors">Twitter</a>

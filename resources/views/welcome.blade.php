@@ -6,6 +6,11 @@
         <!-- Hero Section -->
         <div class="relative pt-5 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 py-2 ">
+                @if(session('success'))
+                <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg">
+                    {{ session('success') }}
+                </div>
+            @endif
                 <!-- Top Banner -->
                 <div class="text-center mb-6">
                     <span class="bg-orange-50 text-orange-700 px-6 py-2 rounded-full text-sm font-medium inline-block">
@@ -43,6 +48,7 @@
 
  <section id="home" class=" pt-5 pb-8 relative">
     <div class="max-w-7xl mx-auto px-4 diagonal-box">
+       
         <div class="grid md:grid-cols-2 gap-12 items-center diagonal-content">
             <div class="space-y-8">
                 <div class="inline-flex items-center space-x-2 bg-white/5 rounded-full px-4 py-2">

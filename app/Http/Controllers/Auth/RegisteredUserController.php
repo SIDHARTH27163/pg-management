@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
@@ -35,12 +36,14 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $avatar = 'https://ui-avatars.com/api/?name=' . urlencode($request->name) . '&background=random&size=128';
         $user = User::create([
+            'uuid' => Str::uuid(), // Generate UUID here
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'avatar' => $avatar
         ]);
-
         event(new Registered($user));
 
         Auth::login($user);

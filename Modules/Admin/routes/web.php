@@ -22,6 +22,7 @@ Route::middleware(['auth', RoleBasedRedirect::class])
     ->group(function () {
         Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
         Route::get('/room-management', [NavController::class, 'RoomManagement'])->name('room-management');
+        Route::get('/booking-management', [NavController::class, 'Booking_PaymentManagement'])->name('booking-management');
         Route::resource('/manage-rooms', RoomController::class);
         Route::resource('/manage-room-features', RoomFeatureController::class);
         Route::resource('/manage-room-rules', RoomRuleController::class);

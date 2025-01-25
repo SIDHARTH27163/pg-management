@@ -21,7 +21,7 @@
             <!-- Navbar -->
             
 
-            <header class="bg-white dark:bg-gray-800 shadow-md relative z-10 py-2">
+            <header class="bg-white dark:bg-gray-900 shadow-md relative z-10 py-2">
                 <div class="max-w-screen-xl flex flex-wrap items-center lg:justify-center md:justify-center justify-between gap-x-5  mx-auto p-4">
                     <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse md:hidden">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
