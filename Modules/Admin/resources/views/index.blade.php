@@ -42,7 +42,7 @@
                       
                   </div>
               <p class="pt-4 text-sm font-medium capitalize text-gray-600 lg:text-lg md:text-base md:pt-6 hover:border-teal-600 dark:hover:border-teal-700 leading-10">
-                Booking and Payment Management
+                Bookings Management
               </p>
             </a>
       

@@ -9,6 +9,7 @@ use Modules\Admin\Models\RoomRule;
 use Modules\Admin\Models\RoomImage;
 use Modules\Admin\Models\RoomsGallery;
 use App\Models\Booking;
+
 class NavController extends Controller
 {
     /**
@@ -18,7 +19,8 @@ class NavController extends Controller
     {
         // Fetch all rooms with their associated data
         $rooms = Room::with(['features', 'rules', 'cover_images', 'gallery_images'])->get();
-        
+        // Fetch rooms for dropdown
+
         // Pass the data to the view
         return view('admin::RoomManagement.index', compact('rooms'));
     }
@@ -38,8 +40,8 @@ class NavController extends Controller
                                       ->orderBy('created_at', 'desc') // Order by creation date in descending order
                                       ->paginate(10);
     
-        
-        return view('admin::Booking_Payment.index', compact('approvedBookings', 'notApprovedBookings'));
+                                      $rooms = Room::all();
+        return view('admin::Booking_Payment.index', compact('approvedBookings', 'notApprovedBookings' , 'rooms'));
     }
     
     

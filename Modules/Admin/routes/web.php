@@ -9,7 +9,10 @@ use Modules\Admin\Http\Controllers\RoomController;
 use Modules\Admin\Http\Controllers\RoomRuleController;
 use Modules\Admin\Http\Controllers\RoomImageController;
 use Modules\Admin\Http\Controllers\PageController;
+use Modules\Admin\Http\Controllers\BookingManagementController;
+
 use App\Http\Middleware\RoleBasedRedirect;
+
 
 /*
 |----------------------------------------------------------------------
@@ -28,6 +31,6 @@ Route::middleware(['auth', RoleBasedRedirect::class])
         Route::resource('/manage-room-rules', RoomRuleController::class);
         Route::resource('/manage-room-images', RoomImageController::class);
         Route::resource('/pages', PageController::class);
-      
+        Route::post('/bookings/approve', [BookingManagementController::class, 'approve_booking'])->name('approve.booking');
         // Add other admin routes here
     });
