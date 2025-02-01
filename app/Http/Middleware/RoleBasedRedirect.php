@@ -22,12 +22,15 @@ class RoleBasedRedirect
 
             // Restrict access if the user's role is 'tenant' but accessing admin routes
             if ($user->acc_type === 'tenant' && $request->is('admin/*')) {
-                return redirect()->route('dashboard')->with('error', 'Unauthorized access to admin routes.');
+                return redirect()->route('user.dashboard.index')->with('error', 'Unauthorized access to admin routes.');
             }
 
             // Restrict access if the user's role is 'admin' but accessing tenant routes
             if ($user->acc_type === 'admin' && $request->is('tenant/*')) {
                 return redirect()->route('admin.dashboard')->with('error', 'Unauthorized access to tenant routes.');
+            }
+            if ($user->acc_type === '=user' && $request->is('/*')) {
+                return redirect()->route('/')->with('error', 'Unauthorized access .');
             }
         }
 
