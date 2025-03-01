@@ -9,7 +9,8 @@ use Modules\Admin\Models\RoomRule;
 use Modules\Admin\Models\RoomImage;
 use Modules\Admin\Models\RoomsGallery;
 use App\Models\Booking;
-
+use App\Models\User;
+use Modules\User\Models\Report;
 class NavController extends Controller
 {
     /**
@@ -27,7 +28,15 @@ class NavController extends Controller
     
     public function UserManagement()
     {
-        return view('admin::UserManagement.index');
+        $users = User::where('acc_type', 'tenant')
+                                   ->orderBy('created_at', 'desc') // Order by creation date in descending order
+                                   ->get();   
+        
+
+    
+                                      
+        // return view('admin::Booking_Payment.index', compact('approvedBookings', 'notApprovedBookings' , 'rooms'));
+        return view('admin::UserManagement.index' , compact('users'));
     }
     public function Booking_PaymentManagement()
     {
@@ -55,7 +64,8 @@ class NavController extends Controller
     }
     public function ReportsManagement()
     {
-        return view('admin::Reports.index');
+        $reports = Report::all();
+        return view('admin::Reports.index'  ,  compact('reports'));
     }
     public function NotificationsManagement()
     {
@@ -65,6 +75,18 @@ class NavController extends Controller
     {
         return view('admin::Settings.index');
     }
-
+    public function change_report_status($id)
+    {
+        // Fetch the report
+        $report = Report::findOrFail($id);
+    
+        // Toggle status (assuming you have a 'status' column)
+        $report->status = $report->status === 'pending' ? 'approved' : 'pending';
+        $report->save();
+    
+        // Redirect back with success message
+        return redirect()->back()->with('success', 'Report status updated successfully.');
+    }
+    
    
 }

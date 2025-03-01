@@ -31,10 +31,14 @@
                                 <td class="px-4 py-2 text-green-600">{{ $booking->status }}</td>
                                 <td class="px-4 py-2">
                                     <!-- Add action buttons (e.g., View or Cancel) -->
-                                    <button class="bg-blue-500 text-white px-4 py-2 rounded-md">Remove</button>
+                                    <form action="{{ route('admin.delete_booking', $booking->id) }}" method="POST" class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-red-600">Delete</button>
+                                    </form>
                                     <button
                                     onclick="openModal({{ $booking->id }})"
-                                    class="bg-blue-500 text-white px-4 py-2 rounded">
+                                    class="text-blue-600">
                                     Approve
                                 </button>
                                 </td>
@@ -103,8 +107,11 @@
                             <td class="px-4 py-2 text-green-600">{{ $booking->status }}</td>
                             <td class="px-4 py-2">
                                 <!-- Add action buttons (e.g., View or Cancel) -->
-                                <button class="bg-blue-500 text-white px-4 py-2 rounded-md">Approve</button>
-                                <button class="bg-blue-500 text-white px-4 py-2 rounded-md">Remove</button>
+                                <form action="{{ route('admin.change_booking_status', $booking->id) }}" method="POST" class="inline">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="text-red-600">Change Booking Status</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

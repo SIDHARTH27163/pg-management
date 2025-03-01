@@ -66,15 +66,10 @@ class RoomController extends Controller
      * Show the form for editing the specified resource.
      */
   
-     public function edit($id)
+     public function dis_approve_room($id)
      {
-         $room = Room::find($id);
-     
-         if (!$room) {
-             return redirect()->route('admin.manage-rooms.index')->with('error', 'Room not found.');
-         }
-     
-         return view('admin::Room.index', compact('room'));
+        
+         
      }
      
 

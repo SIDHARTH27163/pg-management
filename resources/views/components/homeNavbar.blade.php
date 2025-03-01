@@ -4,7 +4,7 @@
     <nav class="">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-1">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="https://res.cloudinary.com/dd9xaofdu/image/upload/v1737822937/cozyway_fyxi1a.png" class="h-full w-32" alt="CozyWay Logo" />
+                <img src="https://res.cloudinary.com/dd9xaofdu/image/upload/v1740755023/cozyway_crh5fc.jpg" class="h-12 w-auto rounded-sm" alt="CozyWay Logo" />
                 {{-- <span class="text-2xl font-bold text-gradient">CozyWay.</span> --}}
             </a>
             <div class="flex items-center space-x-6 rtl:space-x-reverse">

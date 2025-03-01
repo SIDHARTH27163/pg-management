@@ -49,7 +49,7 @@
                     </p>
                     <div class="flex justify-center mt-6">
                         <button id="bookNowBtn" class="px-6 py-3 text-white bg-yellow-600 rounded-lg hover:bg-yellow-700 focus:outline-none focus:ring-4 focus:ring-rose-300">
-                            Book Now
+                            Enquire Now
                         </button>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                         Cancel
                     </button>
                     <button type="submit" class="ml-2 px-4 py-2 text-white bg-rose-600 rounded-lg hover:bg-rose-700 focus:ring-rose-300">
-                        Confirm Booking
+                        Confirm Enquiry
                     </button>
                 </div>
             </form>

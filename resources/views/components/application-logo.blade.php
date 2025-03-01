@@ -1,4 +1,4 @@
 
 
 
-<img src="https://res.cloudinary.com/dd9xaofdu/image/upload/v1737822937/cozyway_fyxi1a.png" class="h-full w-48" alt="CozyWay Logo" />
+<img src="https://res.cloudinary.com/dd9xaofdu/image/upload/v1740755023/cozyway_crh5fc.jpg" class="h-12" alt="CozyWay Logo" />

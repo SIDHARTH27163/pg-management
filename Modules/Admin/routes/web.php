@@ -25,12 +25,23 @@ Route::middleware(['auth', RoleBasedRedirect::class])
     ->group(function () {
         Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
         Route::get('/room-management', [NavController::class, 'RoomManagement'])->name('room-management');
+        Route::get('/user_management', [NavController::class, 'UserManagement'])->name('user_management');
+        Route::put('/report/{id}' ,[NavController::class, 'change_report_status'])->name('report_status');
         Route::get('/booking-management', [NavController::class, 'Booking_PaymentManagement'])->name('booking-management');
+        Route::get('/reports', [NavController::class, 'ReportsManagement'])->name('reports');
+        Route::get('/settings', [NavController::class, 'ReportsManagement'])->name('settings');
         Route::resource('/manage-rooms', RoomController::class);
         Route::resource('/manage-room-features', RoomFeatureController::class);
         Route::resource('/manage-room-rules', RoomRuleController::class);
         Route::resource('/manage-room-images', RoomImageController::class);
         Route::resource('/pages', PageController::class);
         Route::post('/bookings/approve', [BookingManagementController::class, 'approve_booking'])->name('approve.booking');
+        Route::put('/change_booking_status/{id}',[BookingManagementController::class, 'change_booking_status'])->name('change_booking_status');
+        Route::delete('/booking/{id}', [BookingController::class, 'delete_booking'])->name('delete_booking');
+
         // Add other admin routes here
+        Route::post('/send-invite', [AdminController::class, 'sendInvite'])->name('send_invite');
+
+        
+
     });

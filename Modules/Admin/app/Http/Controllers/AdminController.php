@@ -4,7 +4,8 @@ namespace Modules\Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserInvitation;
 class AdminController extends Controller
 {
     /**
@@ -16,51 +17,19 @@ class AdminController extends Controller
         return view('admin::index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function sendInvite(Request $request)
     {
-        return view('admin::create');
-    }
+        $request->validate([
+            'email' => 'required|email|unique:users,email',
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $token = base64_encode($request->email . '|' . now()); // Unique token
 
-    /**
-     * Show the specified resource.
-     */
-    public function show($id)
-    {
-        return view('admin::show');
-    }
+        // Send email with the invitation link
+        Mail::to($request->email)->send(new UserInvitation($token));
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
-        return view('admin::edit');
+        return back()->with('success', 'Invitation sent successfully!');
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
+    
 }

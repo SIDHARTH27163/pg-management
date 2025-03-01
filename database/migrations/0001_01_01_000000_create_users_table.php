@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->enum('profile', ['0', '1'])->default('0');
             $table->enum('acc_type', ['user', 'tenant' , 'admin'])->default('user');
             $table->string('name');
             $table->string('email')->unique();

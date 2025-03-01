@@ -57,4 +57,33 @@ class BookingManagementController extends Controller
 
         return redirect()->back()->with('success', 'Booking approved and allotted successfully.');
     }
+    public function change_booking_status($id)
+    {
+        // Fetch the report
+        $booking = Booking::findOrFail($id);
+    
+        // Toggle status (assuming you have a 'status' column)
+        $booking->status = $booking->status === 'not-approved' ? 'approved' : 'not-approved';
+        $booking->save();
+    
+        // Redirect back with success message
+        return redirect()->back()->with('success', 'Booking status updated successfully.');
+    }
+    public function delete_booking($id)
+    {
+        // Find the booking
+        $booking = Booking::find($id);
+
+        // Check if booking exists
+        if (!$booking) {
+            return redirect()->back()->with('error', 'Booking not found.');
+        }
+
+        // Delete the booking
+        $booking->delete();
+
+        // Redirect back with success message
+        return redirect()->back()->with('success', 'Booking deleted successfully.');
+    }
+
 }
