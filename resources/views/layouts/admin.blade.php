@@ -54,9 +54,9 @@
                             User 
                             </a>
                         </li>
-                        
+                       
                         <li>
-                            <a href="admin.room-management" 
+                            <a href=" {{ route('admin.room-management') }}" 
                             class="text-md block py-2 px-2 whitespace-nowrap items-center border-b-2 border-transparent 
                             hover:border-gray-600 dark:hover:border-gray-100  font-medium leading-5 
                             text-gray-900 dark:text-gray-100 focus:outline-none  
@@ -65,7 +65,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="admin.booking-management" 
+                            
+                            <a href="{{ route('admin.booking-management') }}" 
                             class="text-md block py-2 px-2 whitespace-nowrap items-center border-b-2 border-transparent 
                             hover:border-gray-600 dark:hover:border-gray-100  font-medium leading-5 
                             text-gray-900 dark:text-gray-100 focus:outline-none  
@@ -92,7 +93,7 @@
                             </a>
                         </li> --}}
                         <li>
-                            <a href="{{ route('admin.reports') }}" 
+                            <a href="{{ route('admin.roomreports') }}" 
                             class="text-md block py-2 px-2 whitespace-nowrap items-center border-b-2 border-transparent 
                             hover:border-gray-600 dark:hover:border-gray-100  font-medium leading-5 
                             text-gray-900 dark:text-gray-100 focus:outline-none  

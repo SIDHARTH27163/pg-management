@@ -50,6 +50,14 @@ class Room extends Model
     {
         return $this->hasMany(RoomsGallery::class);
     }
+    public function bookings()
+    {
+        return $this->hasMany(AllottedBooking::class);
+    }
+    public function allottedBookings()
+{
+    return $this->hasMany(AllottedBooking::class, 'room_id');
+}
 
     
 

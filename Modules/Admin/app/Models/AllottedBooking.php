@@ -2,7 +2,7 @@
 namespace Modules\Admin\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\User;
 class AllottedBooking extends Model
 {
     use HasFactory;
